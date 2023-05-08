@@ -10,7 +10,8 @@ const EmployeeSchema = mongoose.Schema({
     salary : {type : Number , default : 0},
     salaryPendingForMonths : [String],
     clockIn : {type : Number},
-    clockOut : {type : Number} 
+    clockOut : {type : Number},
+    
 })
 
 export default mongoose.model("Employee", EmployeeSchema)
