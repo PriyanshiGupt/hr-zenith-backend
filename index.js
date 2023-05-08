@@ -1,10 +1,22 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from 'dotenv'
+import cors from "cors";
+import bodyParser from "body-parser";
+import employeeRoutes from './Routes/employee.js';
 
-dotenv.config()
+
 
 const app = express()
+dotenv.config()
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+// const router = express.Router()
+
+app.use('/Employee' , employeeRoutes)
+
+
 const PORT = process.env.PORT
 
 app.get('/',(req,res)=>{

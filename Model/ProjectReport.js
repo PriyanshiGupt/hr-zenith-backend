@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const ProjectReport = mongoose.Schema({
-
+        projectId : Number,
         projectName : String,
         employeeName : String,
         report : String,
