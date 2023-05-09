@@ -4,19 +4,20 @@ import dotenv from 'dotenv'
 import cors from "cors";
 import bodyParser from "body-parser";
 import employeeRoutes from './Routes/employee.js';
-
-
+import projectdetails from './Routes/projectdetails.js'
+import projectreports from './Routes/projectReports.js'
 
 const app = express()
 dotenv.config()
 app.use(cors());
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // const router = express.Router()
 
 app.use('/Employee' , employeeRoutes)
-
-
+app.use('/Project' , projectdetails);
+app.use('/Report' , projectreports)
 const PORT = process.env.PORT
 
 app.get('/',(req,res)=>{
@@ -34,6 +35,6 @@ mongoose.connect(DATABASE_URL ,{useNewUrlParser : true , useUnifiedTopology : tr
 })
 
 
-app.listen(PORT, (err) => {
+app.listen(PORT, '0.0.0.0',(err) => {
     console.log('Server is listening at', PORT, err)
 })

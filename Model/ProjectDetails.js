@@ -12,4 +12,4 @@ const projecDetails = mongoose.Schema({
    
 })
 
-export default mongoose.model("projectDetails", projecDetails)
+export default mongoose.model("Details", projecDetails)
