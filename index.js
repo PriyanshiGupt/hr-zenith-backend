@@ -6,7 +6,9 @@ import bodyParser from "body-parser";
 import employeeRoutes from './Routes/employee.js';
 import projectdetails from './Routes/projectdetails.js'
 import projectreports from './Routes/projectReports.js'
-
+import transactionRouts from './Routes/transactions.js'
+import leaves from "./Routes/leaves.js";
+import adminRoute from './Routes/admin.js'
 const app = express()
 dotenv.config()
 app.use(cors());
@@ -14,10 +16,12 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // const router = express.Router()
-
+app.use('/Admin' , adminRoute)
 app.use('/Employee' , employeeRoutes)
 app.use('/Project' , projectdetails);
 app.use('/Report' , projectreports)
+app.use('/transactions', transactionRouts)
+app.use('/Leaves', leaves)
 const PORT = process.env.PORT
 
 app.get('/',(req,res)=>{

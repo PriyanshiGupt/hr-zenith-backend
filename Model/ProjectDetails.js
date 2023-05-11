@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 const projecDetails = mongoose.Schema({
+        empId: String,
         projectName : String,
         clientName : String,
         projectType : String,

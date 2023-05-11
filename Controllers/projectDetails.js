@@ -8,7 +8,7 @@ export const getAllProjects = async(req,res)=>{
         const allProjectDetails = [];
         allProjects.forEach(project => {
             allProjectDetails.push({ projectName : project.projectName, clientName : project.clientName, projectType: project.projectType,  projectManager : project.projectManager ,
-                developingPlatform: project.developingPlatform , databaseTech : project.databaseTech ,  description : project.description})
+                developingPlatform: project.developingPlatform , databaseTech : project.databaseTech ,  description : project.description , addedOn : project.addedon})
         })
         res.status(200).json(allProjectDetails);        
     } catch (error) {
@@ -29,3 +29,13 @@ export const addProject = async(req,res)=>{
     }
 }
 
+export const projectDetailsById = async(req,res)=>{
+        try{
+        const { empId } = req.params ;
+        const allProjects = await Details.find({"empId" : empId});
+        console.log(allProjects);
+        res.status(200).json(allProjects);
+        }catch(error){
+            res.status(500).json(error)
+        }
+}
