@@ -124,13 +124,14 @@ export const login = async(req,res)=>{
     const {email,password} = req.body;
     const existingEmployee = await Employee.findOne({email});
     // console.log(existingEmployee.status);
+    if(!existingEmployee){
+        res.status(400).json("UserName AndOr Password Has Not Been Recorgnized");
+     }
     if(existingEmployee.status == 0){
         res.status(400).json("Your Appication is Pending for Approval, Pls Contact Admin");
         return;
     }
-        if(!existingEmployee){
-           res.status(400).json("UserName AndOr Password Has Not Been Recorgnized");
-        }
+        
         try {
             const isPasswordCorrect = await bcrypt.compare(password,existingEmployee.password);
 
